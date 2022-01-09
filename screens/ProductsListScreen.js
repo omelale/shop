@@ -1,7 +1,7 @@
 import React from "react";
 import {StyleSheet,Text,View} from "react-native";
 
-const ProductList = () => {
+const ProductListScreen = () => {
     return (<View className={styles.container}><Text>This is the product list screen</Text></View>)
 }
 
@@ -13,4 +13,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-export default ProductList
+export default ProductListScreen

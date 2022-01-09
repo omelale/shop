@@ -1,8 +1,8 @@
 import React from "react";
 import {StyleSheet,Text,View} from "react-native";
 
-const ProductDetails = () => {
-    return (<View className={styles.container}><Text>This is the Product Details screen</Text></View>)
+const HomeScreen = () => {
+    return (<View className={styles.container}><Text>This is the home screen</Text></View>)
 }
 
 const styles = StyleSheet.create({
@@ -13,4 +13,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-export default ProductDetails
+export default HomeScreen

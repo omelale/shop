@@ -1,7 +1,7 @@
 import React from "react";
 import {StyleSheet,Text,View} from "react-native";
 
-const Search = () => {
+const SearchScreen = () => {
     return (<View className={styles.container}><Text>This is the search screen</Text></View>)
 }
 
@@ -13,4 +13,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-export default Search
+export default SearchScreen
