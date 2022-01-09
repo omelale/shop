@@ -2,7 +2,7 @@ import React from "react";
 import {StyleSheet,Text,View} from "react-native";
 
 const HomeScreen = () => {
-    return (<View className={styles.container}><Text>This is the home screen</Text></View>)
+    return (<Text className={styles.texto}>This is the home screen</Text>)
 }
 
 const styles = StyleSheet.create({
@@ -12,5 +12,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  texto : {
+    fontSize:30,
+    fontFamily:'SplineSans-Bold'
+  }
 });
 export default HomeScreen
