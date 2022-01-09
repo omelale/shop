@@ -2,7 +2,7 @@ import React from "react";
 import {StyleSheet,Text,View} from "react-native";
 
 const ProductListScreen = () => {
-    return (<View className={styles.container}><Text>This is the product list screen</Text></View>)
+    return (<View style={styles.container}><Text style={styles.text}>This is the product list screen</Text></View>)
 }
 
 const styles = StyleSheet.create({
@@ -12,5 +12,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  text : {
+    fontSize:20,
+    fontFamily:'SplineSans-Bold'
+  }
 });
 export default ProductListScreen
