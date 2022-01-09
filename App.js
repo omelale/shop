@@ -31,7 +31,7 @@ export default function App() {
     return (
         <Provider store={store}><View style={styles.container}>
             {/*<HomeScreen/>*/}
-            <Text className={styles.testo}>Tope</Text>
+            <Text style={styles.test}>Init</Text>
         </View></Provider>
     );
 }
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    testo: {
+    test: {
         fontFamily: 'SplineSans-Bold',
         fontSize:40
     }
