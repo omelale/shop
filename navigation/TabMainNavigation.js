@@ -1,5 +1,3 @@
-import homeScreen from "../screens/store/HomeScreen";
-import cartScreen from "../screens/store/CartScreen";
 import searchScreen from "../screens/store/SearchScreen";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {Ionicons} from "@expo/vector-icons";
