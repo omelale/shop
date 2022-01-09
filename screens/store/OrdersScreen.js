@@ -2,7 +2,7 @@ import React from "react";
 import {StyleSheet,Text,View} from "react-native";
 
 const OrdersScreen = () => {
-    return (<View className={styles.container}><Text>This is the orders screen</Text></View>)
+    return (<View style={styles.container}><Text style={styles.txt}>This is the orders screen</Text></View>)
 }
 
 const styles = StyleSheet.create({
@@ -12,5 +12,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+   txt : {
+    fontSize:20,
+    fontFamily:'SplineSans-Bold'
+  }
 });
 export default OrdersScreen
