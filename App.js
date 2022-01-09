@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import 'react-native-gesture-handler';
 import {StyleSheet, Text, View} from 'react-native';
 import HomeScreen from "./screens/store/HomeScreen";
 import {combineReducers, createStore} from "redux";
@@ -6,6 +7,7 @@ import {Provider} from "react-redux";
 import productsReducer from "./store/reducers/products";
 import AppLoading from 'expo-app-loading';
 import useFonts from './hooks/useFont';
+
 
 
 const rootReducer = combineReducers({
