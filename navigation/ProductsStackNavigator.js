@@ -3,6 +3,7 @@ import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import {StyleSheet} from "react-native";
 import ProductListScreen from "../screens/store/ProductsListScreen";
 import ProductDetailsScreen from "../screens/store/ProductDetailsScreen";
+import HeaderButton from "../components/HeaderButton";
 import {Ionicons} from "@expo/vector-icons";
 import colors from "../constants/colors";
 const Stack = createStackNavigator();
