@@ -3,8 +3,9 @@ import {HeaderButtons, Item} from "react-navigation-header-buttons";
 import {StyleSheet} from "react-native";
 import ProductListScreen from "../screens/store/ProductsListScreen";
 import ProductDetailsScreen from "../screens/store/ProductDetailsScreen";
+import CartScreen from "../screens/store/CartScreen";
+import OrdersScreen from "../screens/store/OrdersScreen";
 import HeaderButton from "../components/HeaderButton";
-import {Ionicons} from "@expo/vector-icons";
 import colors from "../constants/colors";
 const Stack = createStackNavigator();
 
@@ -20,7 +21,7 @@ const ProductStackNavigator = () => {
                 name="ProductListScreen"
                 component={ProductListScreen}
                 options={{
-                    title: 'Product List',
+                    title: 'All Products',
                 }}
             />
             <Stack.Screen
@@ -40,6 +41,32 @@ const ProductStackNavigator = () => {
     </Stack.Navigator>);
 }
 
+
+const CartStackNavigator = () => {
+    return (<Stack.Navigator>
+        <Stack.Group screenOptions={{
+            headerStyle: styles.headerStyle,
+            headerTintColor: '#fff',
+            headerTitleStyle: styles.headerTitleStyle
+        }}>
+            <Stack.Screen
+                name="CartScreen"
+                component={CartScreen}
+                options={{
+                    title: 'Cart',
+                }}
+            />
+            <Stack.Screen
+                name="OrdersScreen"
+                component={OrdersScreen}
+                options={{
+                    title: 'Order'
+                }}
+            />
+        </Stack.Group>
+    </Stack.Navigator>);
+}
+
 const styles = StyleSheet.create({
     headerStyle: {
         backgroundColor: colors.primaryColor,
@@ -48,4 +75,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default ProductStackNavigator
+export {ProductStackNavigator, CartStackNavigator}
