@@ -26,7 +26,7 @@ function TabMainNavigation() {
                     // You can return any component that you like here!
                     return <Ionicons name={iconName} size={size} color={color}/>;
                 },
-                tabBarActiveTintColor: colors.primaryColor,
+                tabBarActiveTintColor: colors.accentColor,
                 tabBarInactiveTintColor: colors.primaryColor,
                 tabBarLabelStyle: {
                     fontSize: 15,
