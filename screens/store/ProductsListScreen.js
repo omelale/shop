@@ -1,10 +1,17 @@
 import React from "react";
 import {FlatList, StyleSheet, Text, View} from "react-native";
 import {useSelector} from "react-redux";
+import ProductItem from "../../components/shop/ProductItem";
 
 const ProductListScreen = (props) => {
+  const viewDetails = () => {
+    console.log('details')
+  }
+  const addToCart = () => {
+    console.log('Add To Cart')
+  }
   const products = useSelector(state => state.products.availableProducts);
-  return (<FlatList data={products} keyExtractor={item => item.id} renderItem={itemData => <Text>{itemData.item.title}</Text>}/>)
+  return (<FlatList data={products} keyExtractor={item => item.id} renderItem={itemData => <ProductItem product={itemData.item} onViewDetails={viewDetails} onAddToCart={addToCart}/>}/>)
 }
 
 const styles = StyleSheet.create({

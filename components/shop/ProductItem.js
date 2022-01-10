@@ -15,12 +15,12 @@ return (
       </View>
       <View style={styles.actions}>
         <Button
-          color={Colors.primary}
+          color={Colors.primaryColor}
           title="View Details"
           onPress={props.onViewDetails}
         />
         <Button
-          color={Colors.primary}
+          color={Colors.primaryColor}
           title="To Cart"
           onPress={props.onAddToCart}
         />
