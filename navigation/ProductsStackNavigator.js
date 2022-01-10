@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     headerStyle: {
         backgroundColor: colors.primaryColor,
     }, headerTitleStyle: {
-        fontWeight: 'bold',
+        fontFamily:'SplineSans-Bold'
     }
 })
 
