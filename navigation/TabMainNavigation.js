@@ -2,7 +2,7 @@ import searchScreen from "../screens/store/SearchScreen";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {Ionicons} from "@expo/vector-icons";
 import colors from "../constants/colors";
-import {ProductStackNavigator,CartStackNavigator} from "./ProductsStackNavigator";
+import {CartStackNavigator, ProductStackNavigator} from "./ProductsStackNavigator";
 
 
 const Tab = createBottomTabNavigator();
@@ -28,6 +28,9 @@ function TabMainNavigation() {
                 },
                 tabBarActiveTintColor: colors.primaryColor,
                 tabBarInactiveTintColor: colors.primaryColor,
+                tabBarLabelStyle: {
+                    fontSize: 15,
+                }
             })}
         >
             <Tab.Screen name="Home" component={ProductStackNavigator} options={{headerShown: false}}/>
