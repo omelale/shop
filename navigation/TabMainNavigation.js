@@ -35,7 +35,7 @@ function TabMainNavigation() {
         >
             <Tab.Screen name="Home" component={ProductStackNavigator} options={{headerShown: false}}/>
             <Tab.Screen name="Search" component={searchScreen} options={{headerShown: false}}/>
-            <Tab.Screen name="Cart" component={CartStackNavigator} options={{headerShown: false}}/>
+            <Tab.Screen name="Cart" component={CartStackNavigator} options={{headerShown: false, tabBarBadge: 3, tabBarBadgeStyle:{left:10,top:-1} }}/>
         </Tab.Navigator>
     );
 }
