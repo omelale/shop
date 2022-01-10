@@ -27,13 +27,15 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     price: {
+        fontFamily:'SplineSans-Bold',
         fontSize: 20,
         color: '#888',
         textAlign: 'center',
         marginVertical: 20
     },
     description: {
-        fontSize: 14,
+        fontFamily:'SplineSans-Regular',
+        fontSize: 16,
         textAlign: 'center',
         marginHorizontal: 20
     }
