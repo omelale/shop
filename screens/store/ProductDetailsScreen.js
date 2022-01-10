@@ -1,7 +1,7 @@
 import React from "react";
-import {StyleSheet,Text,View} from "react-native";
+import {StyleSheet,Text,View,Image,Button,ScrollView} from "react-native";
 
-const ProductDetailsScreen = () => {
+const ProductDetailsScreen = (props) => {
     return (<View className={styles.container}><Text>This is the Product Details screen</Text></View>)
 }
 
