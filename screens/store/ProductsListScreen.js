@@ -1,8 +1,10 @@
 import React from "react";
-import {StyleSheet,Text,View} from "react-native";
+import {FlatList, StyleSheet, Text, View} from "react-native";
+import {useSelector} from "react-redux";
 
-const ProductListScreen = () => {
-    return (<View style={styles.container}><Text style={styles.text}>This is the product list screen</Text></View>)
+const ProductListScreen = (props) => {
+  const products = useSelector(state => state.products.availableProducts);
+  return (<FlatList data={products} keyExtractor={item => item.id} renderItem={itemData => <Text>{itemData.item.title}</Text>}/>)
 }
 
 const styles = StyleSheet.create({
@@ -12,9 +14,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  text : {
-    fontSize:20,
-    fontFamily:'SplineSans-Bold'
+  text: {
+    fontSize: 20,
+    fontFamily: 'SplineSans-Bold'
   }
 });
 export default ProductListScreen
