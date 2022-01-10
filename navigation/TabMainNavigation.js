@@ -30,12 +30,17 @@ function TabMainNavigation() {
                 tabBarInactiveTintColor: colors.primaryColor,
                 tabBarLabelStyle: {
                     fontSize: 15,
+                    fontFamily: 'SplineSans-Regular',
                 }
             })}
         >
             <Tab.Screen name="Home" component={ProductStackNavigator} options={{headerShown: false}}/>
             <Tab.Screen name="Search" component={searchScreen} options={{headerShown: false}}/>
-            <Tab.Screen name="Cart" component={CartStackNavigator} options={{headerShown: false, tabBarBadge: 3, tabBarBadgeStyle:{left:10,top:-1,fontSize:12} }}/>
+            <Tab.Screen name="Cart" component={CartStackNavigator} options={{
+                headerShown: false,
+                tabBarBadge: 3,
+                tabBarBadgeStyle: {left: 10, top: -1, fontSize: 12}
+            }}/>
         </Tab.Navigator>
     );
 }
