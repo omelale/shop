@@ -70,10 +70,12 @@ const styles = StyleSheet.create({
         padding: 10
     },
     title: {
+        fontFamily:'SplineSans-Bold',
         fontSize: 18,
         marginVertical: 4
     },
     price: {
+        fontFamily:'SplineSans-Regular',
         fontSize: 14,
         color: '#888'
     },
