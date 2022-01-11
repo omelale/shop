@@ -20,7 +20,8 @@ const ProductDetailsScreen = (props) => {
 const styles = StyleSheet.create({
     image: {
         width: '100%',
-        height: 300
+        height: 300,
+        resizeMode:'contain'
     },
     actions: {
         marginVertical: 10,
