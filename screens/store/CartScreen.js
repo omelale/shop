@@ -1,30 +1,60 @@
 import React from "react";
-import {StyleSheet,Text,View,Button} from "react-native";
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import {Button, ScrollView, StyleSheet, Text, View} from "react-native";
+import {useSelector} from "react-redux";
+import colors from "../../constants/colors";
 
 const CartScreen = (props) => {
+    const cartProducts = useSelector(state => state.cart);
+
     return (
-        <View style={styles.container}>
-          <Text style={styles.txt}>This is the Cart screen</Text>
-          <Button
-            title="Go to Orders Screen"
-            onPress={() => props.navigation.navigate('OrdersScreen')}
-          />
-        </View>)
+        <ScrollView>
+            <View style={styles.screen}>
+                <Text>There are {cartProducts.totalProducts} products in the cart</Text>
+                <View style={styles.summary}>
+                    <Text style={styles.summaryText}>
+                        Total:{' '}
+                        <Text style={styles.amount}>${cartProducts.totalAmount.toFixed(2)}</Text>
+                    </Text>
+                    <Button
+                        color={colors.accentColor}
+                        title="Order Now"
+                        disabled={cartProducts.totalProducts === 0}
+                        onPress={() => props.navigation.navigate('OrdersScreen')}
+                    />
+                </View>
+            </View>
+        </ScrollView>
+    )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-   txt : {
-    fontSize:20,
-    fontFamily:'SplineSans-Bold'
-  }
+    screen: {
+        margin: 20
+    },
+    summary: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginBottom: 20,
+        padding: 10,
+        shadowColor: 'black',
+        shadowOpacity: 0.26,
+        shadowOffset: {width: 0, height: 2},
+        shadowRadius: 8,
+        elevation: 5,
+        borderRadius: 10,
+        backgroundColor: 'white'
+    },
+    summaryText: {
+        fontFamily: 'SplineSans-Bold',
+        fontSize: 18
+    },
+    amount: {
+        color: colors.primary
+    },
+    txt: {
+        fontSize: 20,
+        fontFamily: 'SplineSans-Bold'
+    }
 });
 export default CartScreen
