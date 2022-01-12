@@ -1,12 +1,32 @@
-import React from "react";
+import React, {useLayoutEffect} from "react";
 import {Button, Image, ScrollView, StyleSheet, Text, View} from "react-native";
 import colors from "../../constants/colors";
-import {useDispatch} from "react-redux";
+import {HeaderButtons, Item} from "react-navigation-header-buttons";
+import HeaderButton from "../../components/HeaderButton";
+import {useDispatch,useSelector} from "react-redux";
 import * as cartActions from '../../store/actions/cart'
+import {addToFavourites} from "../../store/actions/products";
 
 const ProductDetailsScreen = (props) => {
     const selectedProduct = props.route.params.product;
+    const favProducts = useSelector((state)=>state.products.favouriteProducts);
+    console.log(favProducts);
+    const isFav = favProducts.some(favMeal=>favMeal.id === selectedProduct.id );
     const dispatch = useDispatch();
+    useLayoutEffect(
+        () => {
+            props.navigation.setOptions({
+                headerRight: () => (
+                    <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                        <Item
+                            iconName={isFav ? 'ios-star' : 'ios-star-outline'}
+                            onPress={() => {dispatch(addToFavourites(selectedProduct.id))}}
+                        />
+                    </HeaderButtons>
+                )
+            })
+        }
+    );
     return (
         <ScrollView>
             <Image style={styles.image} source={{uri: selectedProduct.imageUrl}}/>

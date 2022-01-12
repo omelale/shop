@@ -18,7 +18,7 @@ const productReducer = (state=initialState,action) => {
                 const removed = newFavs.filter(product => product.id !== addedProduct.id)
                 return {...state, favouriteProducts: removed}
             } else {
-                return {...state,favouriteProducts: state.favouriteProducts.concat(state.availableProducts.find(product=>product.id===addedProduct.id))}
+                return {...state,favouriteProducts: state.favouriteProducts.concat(state.availableProducts.find(meal=>meal.id===addedProduct))}
             }
         }
         default : {
