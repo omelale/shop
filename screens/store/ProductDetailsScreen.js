@@ -10,7 +10,6 @@ import {addToFavourites} from "../../store/actions/products";
 const ProductDetailsScreen = (props) => {
     const selectedProduct = props.route.params.product;
     const favProducts = useSelector((state)=>state.products.favouriteProducts);
-    console.log(favProducts);
     const isFav = favProducts.some(favMeal=>favMeal.id === selectedProduct.id );
     const dispatch = useDispatch();
     useLayoutEffect(
