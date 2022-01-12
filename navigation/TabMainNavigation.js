@@ -1,8 +1,8 @@
-import searchScreen from "../screens/store/SearchScreen";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {Ionicons} from "@expo/vector-icons";
 import colors from "../constants/colors";
 import {CartStackNavigator, ProductStackNavigator} from "./ProductsStackNavigator";
+import SideDrawerNavigation from "./SideDrawerNavigation";
 import {useSelector} from "react-redux";
 
 
@@ -28,20 +28,38 @@ function TabMainNavigation() {
                     // You can return any component that you like here!
                     return <Ionicons name={iconName} size={size} color={color}/>;
                 },
+                tabBarStyle: {
+                    position: 'absolute',
+                    bottom: 25,
+                    left: 20,
+                    right: 20,
+                    borderRadius: 15,
+                    height: 90,
+                    shadowColor: "#000",
+                    shadowOffset: {
+                        width: 0,
+                        height: 2,
+                    },
+                    shadowOpacity: 0.25,
+                    shadowRadius: 3.84,
+                    elevation: 5,
+                },
                 tabBarActiveTintColor: colors.accentColor,
                 tabBarInactiveTintColor: colors.primaryColor,
                 tabBarLabelStyle: {
                     fontSize: 15,
                     fontFamily: 'SplineSans-Regular',
+                    position:'relative',
+                    top:-10
                 }
             })}
         >
             <Tab.Screen name="Home" component={ProductStackNavigator} options={{headerShown: false}}/>
-            <Tab.Screen name="Search" component={searchScreen} options={{headerShown: false}}/>
+            <Tab.Screen name="Search" component={SideDrawerNavigation} options={{headerShown: false}}/>
             <Tab.Screen name="Cart" component={CartStackNavigator} options={{
                 headerShown: false,
                 tabBarBadge: totalCartProducts,
-                tabBarBadgeStyle: {left: 10, top: -1, fontSize: 12}
+                tabBarBadgeStyle: {left: 10, top: 10, fontSize: 12}
             }}/>
         </Tab.Navigator>
     );
