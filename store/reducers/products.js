@@ -11,11 +11,10 @@ const productReducer = (state=initialState,action) => {
     switch (action.type) {
         case ADD_TO_FAVOURITES : {
             const addedProduct = action.product;
-            const existingIndex = state.favouriteProducts.findIndex(product => product.id === addedProduct.id);
+            const existingIndex = state.favouriteProducts.findIndex(product => product.id === addedProduct);
             if(existingIndex >= 0){
                 const newFavs = [...state.favouriteProducts];
-                // const removed = newFavs.splice(existingIndex,1);
-                const removed = newFavs.filter(product => product.id !== addedProduct.id)
+                const removed = newFavs.filter(product => product.id !== addedProduct)
                 return {...state, favouriteProducts: removed}
             } else {
                 return {...state,favouriteProducts: state.favouriteProducts.concat(state.availableProducts.find(meal=>meal.id===addedProduct))}
