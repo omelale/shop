@@ -8,11 +8,8 @@ import useFonts from './hooks/useFont';
 import TabMainNavigation from "./navigation/TabMainNavigation";
 import cartReducer from "./store/reducers/cart";
 
-
-
 const rootReducer = combineReducers({
-    products: productsReducer,
-    cart : cartReducer
+    products: productsReducer, cart: cartReducer
 });
 
 const store = createStore(rootReducer);
@@ -31,10 +28,8 @@ export default function App() {
             onError={(err) => console.log(err)}
         />);
     }
-    return (
-        <Provider store={store}><NavigationContainer>
+    return (<Provider store={store}><NavigationContainer>
         <TabMainNavigation/>
-        </NavigationContainer></Provider>
-    );
+    </NavigationContainer></Provider>);
 }
 

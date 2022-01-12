@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     image: {
         width: '100%',
         height: '100%',
-        resizeMode:'contain'
+        resizeMode: 'contain'
     },
     details: {
         alignItems: 'center',
@@ -71,12 +71,12 @@ const styles = StyleSheet.create({
         padding: 10
     },
     title: {
-        fontFamily:'SplineSans-Bold',
+        fontFamily: 'SplineSans-Bold',
         fontSize: 18,
         marginVertical: 4
     },
     price: {
-        fontFamily:'SplineSans-Regular',
+        fontFamily: 'SplineSans-Regular',
         fontSize: 14,
         color: '#888'
     },
