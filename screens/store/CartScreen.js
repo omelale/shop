@@ -1,29 +1,50 @@
 import React from "react";
-import {Button, ScrollView, StyleSheet, Text, View} from "react-native";
+import {Button, FlatList, ScrollView, StyleSheet, Text, View} from "react-native";
 import {useSelector} from "react-redux";
+import CartItem from "../../components/shop/CartItem";
 import colors from "../../constants/colors";
 
 const CartScreen = (props) => {
-    const cartProducts = useSelector(state => state.cart);
-
+  const cartTotalAmount = useSelector(state => state.cart.totalAmount);
+  const cartItems = useSelector(state => {
+        const transformedCartItems = [];
+        for (const key in state.cart.items) {
+            transformedCartItems.push({
+                productId: key,
+                productTitle: state.cart.items[key].productTitle,
+                productPrice: state.cart.items[key].productPrice,
+                quantity: state.cart.items[key].quantity,
+                sum: state.cart.items[key].sum
+            });
+        }
+        return transformedCartItems;
+    });
     return (
-        <ScrollView>
-            <View style={styles.screen}>
-                <Text>There are {cartProducts.totalProducts} products in the cart</Text>
-                <View style={styles.summary}>
-                    <Text style={styles.summaryText}>
-                        Total:{' '}
-                        <Text style={styles.amount}>${cartProducts.totalAmount.toFixed(2)}</Text>
-                    </Text>
-                    <Button
-                        color={colors.accentColor}
-                        title="Order Now"
-                        disabled={cartProducts.totalProducts === 0}
-                        onPress={() => props.navigation.navigate('OrdersScreen')}
-                    />
-                </View>
-            </View>
-        </ScrollView>
+        <View style={styles.screen}>
+      <View style={styles.summary}>
+        <Text style={styles.summaryText}>
+          Total:{' '}
+          <Text style={styles.amount}>${cartTotalAmount.toFixed(2)}</Text>
+        </Text>
+        <Button
+          color={colors.accentColor}
+          title="Order Now"
+          disabled={cartItems.length === 0}
+        />
+      </View>
+      <FlatList
+        data={cartItems}
+        keyExtractor={item => item.productId}
+        renderItem={itemData => (
+          <CartItem
+            quantity={itemData.item.quantity}
+            title={itemData.item.productTitle}
+            amount={itemData.item.sum}
+            onRemove={() => {}}
+          />
+        )}
+      />
+    </View>
     )
 }
 
