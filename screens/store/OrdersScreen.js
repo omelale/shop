@@ -1,8 +1,12 @@
 import React from "react";
-import {StyleSheet,Text,View} from "react-native";
+import {StyleSheet,Text,View,FlatList} from "react-native";
+import {useSelector} from "react-redux";
 
-const OrdersScreen = () => {
-    return (<View style={styles.container}><Text style={styles.txt}>This is the orders screen</Text></View>)
+const OrdersScreen = (props) => {
+    const orders = useSelector(state => state.orders.orders);
+    return (
+        <FlatList data={orders} renderItem={item => <Text>{item.totalAmount}</Text>}/>
+    )
 }
 
 const styles = StyleSheet.create({
