@@ -6,6 +6,7 @@ import ProductDetailsScreen from "../screens/store/ProductDetailsScreen";
 import CartScreen from "../screens/store/CartScreen";
 import OrdersScreen from "../screens/store/OrdersScreen";
 import HeaderButton from "../components/HeaderButton";
+import SearchScreen from "../screens/store/SearchScreen";
 import colors from "../constants/colors";
 const Stack = createStackNavigator();
 
@@ -67,6 +68,37 @@ const CartStackNavigator = () => {
     </Stack.Navigator>);
 }
 
+const SearchStackNavigator = () => {
+    return (<Stack.Navigator>
+        <Stack.Group screenOptions={{
+            headerStyle: styles.headerStyle,
+            headerTintColor: '#fff',
+            headerTitleStyle: styles.headerTitleStyle
+        }}>
+            <Stack.Screen
+                name="SearchScreen"
+                component={SearchScreen}
+                options={{
+                    title: 'Search Products',
+                }}
+            />
+            <Stack.Screen
+                name="ProductDetailsScreen"
+                component={ProductDetailsScreen}
+                options={({route}) => ({
+                    title: route.params.product.title,
+                    headerRight: () =>
+                        <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                            <Item iconName='ios-star' onPress={() => {
+                            }}/>
+                        </HeaderButtons>
+                    ,
+                })}
+            />
+        </Stack.Group>
+    </Stack.Navigator>);
+}
+
 const styles = StyleSheet.create({
     headerStyle: {
         backgroundColor: colors.primaryColor,
@@ -75,4 +107,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export {ProductStackNavigator, CartStackNavigator}
+export {ProductStackNavigator, CartStackNavigator, SearchStackNavigator}
