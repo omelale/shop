@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     quantity: {
-        fontFamily: 'SplineSans',
+        fontFamily: 'SplineSans-Regular',
         color: '#888',
         fontSize: 16
     },
