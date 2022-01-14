@@ -1,9 +1,10 @@
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {Ionicons} from "@expo/vector-icons";
 import colors from "../constants/colors";
-import {CartStackNavigator, ProductStackNavigator} from "./ProductsStackNavigator";
+import {CartStackNavigator, ProductStackNavigator,SearchStackNavigator} from "./ProductsStackNavigator";
 import SideDrawerExtraNavigation from "./SideDrawerExtraNavigation";
 import {useSelector} from "react-redux";
+import SearchScreen from "../screens/store/SearchScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -28,12 +29,7 @@ function TabMainNavigation() {
                     return <Ionicons name={iconName} size={size} color={color}/>;
                 },
                 tabBarStyle: {
-                    position: 'absolute',
-                    bottom: 25,
-                    left: 20,
-                    right: 20,
-                    borderRadius: 15,
-                    height: 90,
+                    height: 60,
                     shadowColor: "#000",
                     shadowOffset: {
                         width: 0,
@@ -53,8 +49,8 @@ function TabMainNavigation() {
                 }
             })}
         >
-            <Tab.Screen name="Home" component={ProductStackNavigator} options={{headerShown: false}}/>
-            <Tab.Screen name="Search" component={SideDrawerExtraNavigation} options={{headerShown: false}}/>
+            <Tab.Screen name="Home" component={SideDrawerExtraNavigation} options={{headerShown: false}}/>
+            <Tab.Screen name="Search" component={SearchStackNavigator} options={{headerShown: false}}/>
             <Tab.Screen name="Cart" component={CartStackNavigator} options={{
                 headerShown: false,
                 tabBarBadge: totalCartProducts,
