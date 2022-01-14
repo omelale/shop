@@ -1,12 +1,13 @@
 import React from "react";
-import {Button, FlatList, ScrollView, StyleSheet, Text, View} from "react-native";
-import {useSelector} from "react-redux";
+import {Button, FlatList, StyleSheet, Text, View} from "react-native";
+import {useDispatch, useSelector} from "react-redux";
 import CartItem from "../../components/shop/CartItem";
 import colors from "../../constants/colors";
+import * as cartActions from '../../store/actions/cart';
 
 const CartScreen = (props) => {
-  const cartTotalAmount = useSelector(state => state.cart.totalAmount);
-  const cartItems = useSelector(state => {
+    const cartTotalAmount = useSelector(state => state.cart.totalAmount);
+    const cartItems = useSelector(state => {
         const transformedCartItems = [];
         for (const key in state.cart.items) {
             transformedCartItems.push({
@@ -17,34 +18,39 @@ const CartScreen = (props) => {
                 sum: state.cart.items[key].sum
             });
         }
-        return transformedCartItems;
+        return transformedCartItems.sort((a, b) =>
+            a.productId > b.productId ? 1 : -1
+        );
     });
+    const dispatch = useDispatch();
     return (
         <View style={styles.screen}>
-      <View style={styles.summary}>
-        <Text style={styles.summaryText}>
-          Total:{' '}
-          <Text style={styles.amount}>${cartTotalAmount.toFixed(2)}</Text>
-        </Text>
-        <Button
-          color={colors.accentColor}
-          title="Order Now"
-          disabled={cartItems.length === 0}
-        />
-      </View>
-      <FlatList
-        data={cartItems}
-        keyExtractor={item => item.productId}
-        renderItem={itemData => (
-          <CartItem
-            quantity={itemData.item.quantity}
-            title={itemData.item.productTitle}
-            amount={itemData.item.sum}
-            onRemove={() => {}}
-          />
-        )}
-      />
-    </View>
+            <View style={styles.summary}>
+                <Text style={styles.summaryText}>
+                    Total:{' '}
+                    <Text style={styles.amount}>${cartTotalAmount.toFixed(2)}</Text>
+                </Text>
+                <Button
+                    color={colors.accentColor}
+                    title="Order Now"
+                    disabled={cartItems.length === 0}
+                />
+            </View>
+            <FlatList
+                data={cartItems}
+                keyExtractor={item => item.productId}
+                renderItem={itemData => (
+                    <CartItem
+                        quantity={itemData.item.quantity}
+                        title={itemData.item.productTitle}
+                        amount={itemData.item.sum}
+                        onRemove={() => {
+                            dispatch(cartActions.removeFromCart(itemData.item.productId));
+                        }}
+                    />
+                )}
+            />
+        </View>
     )
 }
 
