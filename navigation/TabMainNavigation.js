@@ -2,9 +2,8 @@ import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {Ionicons} from "@expo/vector-icons";
 import colors from "../constants/colors";
 import {CartStackNavigator, ProductStackNavigator} from "./ProductsStackNavigator";
-import SideDrawerNavigation from "./SideDrawerNavigation";
+import SideDrawerExtraNavigation from "./SideDrawerExtraNavigation";
 import {useSelector} from "react-redux";
-
 
 const Tab = createBottomTabNavigator();
 
@@ -49,13 +48,13 @@ function TabMainNavigation() {
                 tabBarLabelStyle: {
                     fontSize: 15,
                     fontFamily: 'SplineSans-Regular',
-                    position:'relative',
-                    top:-10
+                    position: 'relative',
+                    top: -10
                 }
             })}
         >
             <Tab.Screen name="Home" component={ProductStackNavigator} options={{headerShown: false}}/>
-            <Tab.Screen name="Search" component={SideDrawerNavigation} options={{headerShown: false}}/>
+            <Tab.Screen name="Search" component={SideDrawerExtraNavigation} options={{headerShown: false}}/>
             <Tab.Screen name="Cart" component={CartStackNavigator} options={{
                 headerShown: false,
                 tabBarBadge: totalCartProducts,
