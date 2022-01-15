@@ -3,6 +3,7 @@ import {FlatList} from "react-native";
 import ProductItem from "../../components/shop/ProductItem";
 import {useDispatch, useSelector} from "react-redux";
 import * as cartActions from '../../store/actions/cart'
+import * as productActions from '../../store/actions/products'
 
 
 const UserProducts = (props) => {
@@ -23,6 +24,11 @@ const UserProducts = (props) => {
                     onEdit={
                         ()=>{
                             console.log('display')
+                        }
+                    }
+                    onDelete={
+                        ()=>{
+                            dispatch(productActions.deleteProduct(itemData.item.id))
                         }
                     }
                 />}
