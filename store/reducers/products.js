@@ -1,5 +1,5 @@
 import PRODUCTS from "../../data/dummy-data";
-import {ADD_TO_FAVOURITES, CREATE_PRODUCT, DELETE_PRODUCT} from "../actions/products";
+import {ADD_TO_FAVOURITES, CREATE_PRODUCT, DELETE_PRODUCT, EDIT_PRODUCT} from "../actions/products";
 
 const initialState = {
     availableProducts: PRODUCTS,
@@ -36,6 +36,24 @@ const productReducer = (state = initialState, action) => {
                 ...state,
                 availableProducts: state.availableProducts.concat(action.product),
                 userProducts: state.userProducts.concat(action.product)
+            }
+        }
+        case EDIT_PRODUCT : {
+            const prodId = action.product.id;
+            const prodIndexInAll = state.availableProducts.findIndex(
+                prod => prod.id === prodId
+            );
+            const updatedAvailableProducts = [...state.availableProducts];
+            updatedAvailableProducts[prodIndexInAll] = action.product;
+            const prodIndexInUserProds = state.userProducts.findIndex(
+                prod => prod.id === prodId
+            );
+            const updatedUserProducts = [...state.userProducts];
+            updatedUserProducts[prodIndexInUserProds] = action.product;
+            return {
+                ...state,
+                availableProducts: updatedAvailableProducts,
+                userProducts: updatedUserProducts
             }
         }
         default : {
