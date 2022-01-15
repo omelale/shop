@@ -1,5 +1,5 @@
 import PRODUCTS from "../../data/dummy-data";
-import {ADD_TO_FAVOURITES} from "../actions/products";
+import {ADD_TO_FAVOURITES,DELETE_PRODUCT} from "../actions/products";
 
 const initialState = {
     availableProducts: PRODUCTS,
@@ -21,6 +21,14 @@ const productReducer = (state = initialState, action) => {
                     ...state,
                     favouriteProducts: state.favouriteProducts.concat(state.availableProducts.find(meal => meal.id === addedProduct))
                 }
+            }
+        }
+        case DELETE_PRODUCT : {
+            return {
+                ...state,
+                availableProducts : state.availableProducts.filter(product=>product.id !== action.product),
+                favouriteProducts : state.favouriteProducts.filter(product=>product.id !== action.product),
+                userProducts: state.userProducts.filter(product=>product.id !== action.product)
             }
         }
         default : {
