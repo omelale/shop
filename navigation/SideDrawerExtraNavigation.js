@@ -13,9 +13,9 @@ const SideDrawerExtraNavigation = () => {
         <NavigationContainer independent={true}>
             <Drawer.Navigator initialRouteName="Home">
                 <Drawer.Screen name="Home" component={ProductStackNavigator}/>
-                <Drawer.Screen name="OrdersScreen" component={OrdersScreen}/>
-                <Drawer.Screen name="userProducts" component={userProducts}/>
-                <Drawer.Screen name="FavouriteProducts" component={FavouriteProducts}/>
+                <Drawer.Screen name="OrdersScreen" component={OrdersScreen} options={{ title: 'Your Orders' }}/>
+                <Drawer.Screen name="userProducts" component={userProducts} options={{ title: 'Manage Products' }}/>
+                <Drawer.Screen name="FavouriteProducts" component={FavouriteProducts} options={{ title: 'Favourite Products' }}/>
             </Drawer.Navigator>
         </NavigationContainer>
     );
