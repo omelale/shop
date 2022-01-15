@@ -20,6 +20,11 @@ const UserProducts = (props) => {
                     onAddToCart={() => {
                         dispatch(cartActions.addToCart(itemData.item))
                     }}
+                    onEdit={
+                        ()=>{
+                            console.log('display')
+                        }
+                    }
                 />}
         />
     )
