@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import {Button, ScrollView, StyleSheet, Text, TextInput, View} from "react-native";
 import colors from "../../constants/colors";
+import {useDispatch} from "react-redux";
+import * as productActions from '../../store/actions/products'
 
 const EditProducts = (props) => {
     const product = props.route.params.product;
