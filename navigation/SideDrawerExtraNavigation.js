@@ -4,6 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import FavouriteProducts from "../screens/user/FavouriteProducts";
 import OrdersScreen from "../screens/store/OrdersScreen";
 import {ProductStackNavigator} from "./ProductsStackNavigator";
+import userProducts from "../screens/user/UserProducts";
 
 const Drawer = createDrawerNavigator();
 
@@ -13,6 +14,7 @@ const SideDrawerExtraNavigation = () => {
             <Drawer.Navigator initialRouteName="Home">
                 <Drawer.Screen name="Home" component={ProductStackNavigator}/>
                 <Drawer.Screen name="OrdersScreen" component={OrdersScreen}/>
+                <Drawer.Screen name="userProducts" component={userProducts}/>
                 <Drawer.Screen name="FavouriteProducts" component={FavouriteProducts}/>
             </Drawer.Navigator>
         </NavigationContainer>
