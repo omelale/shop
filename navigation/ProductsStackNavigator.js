@@ -10,6 +10,7 @@ import SearchScreen from "../screens/store/SearchScreen";
 import userProducts from "../screens/user/UserProducts";
 import editProducts from "../screens/user/EditProducts";
 import colors from "../constants/colors";
+
 const Stack = createStackNavigator();
 
 
@@ -104,7 +105,6 @@ const SearchStackNavigator = () => {
 const ManageProductsStackNavigator = () => {
     return (<Stack.Navigator>
         <Stack.Group screenOptions={{
-            headerShown: false,
             headerStyle: styles.headerStyle,
             headerTintColor: '#fff',
             headerTitleStyle: styles.headerTitleStyle
@@ -114,13 +114,14 @@ const ManageProductsStackNavigator = () => {
                 component={userProducts}
                 options={{
                     title: false,
+                    headerShown: false,
                 }}
             />
             <Stack.Screen
                 name="editProducts"
                 component={editProducts}
                 options={({route}) => ({
-                    title: 'Edit '+route.params.product.title,
+                    title: 'Edit ' + route.params.product.title,
                     headerRight: () =>
                         <HeaderButtons HeaderButtonComponent={HeaderButton}>
                             <Item iconName='ios-star' onPress={() => {
@@ -137,8 +138,8 @@ const styles = StyleSheet.create({
     headerStyle: {
         backgroundColor: colors.primaryColor,
     }, headerTitleStyle: {
-        fontFamily:'SplineSans-Bold'
+        fontFamily: 'SplineSans-Bold'
     }
 })
 
-export {ProductStackNavigator, CartStackNavigator, SearchStackNavigator,ManageProductsStackNavigator}
+export {ProductStackNavigator, CartStackNavigator, SearchStackNavigator, ManageProductsStackNavigator}

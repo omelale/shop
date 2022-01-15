@@ -23,7 +23,7 @@ const UserProducts = (props) => {
                     }}
                     onEdit={
                         ()=>{
-                            console.log('display')
+                            props.navigation.navigate('editProducts', {product: itemData.item});
                         }
                     }
                     onDelete={
