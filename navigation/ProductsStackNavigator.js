@@ -9,6 +9,7 @@ import HeaderButton from "../components/HeaderButton";
 import SearchScreen from "../screens/store/SearchScreen";
 import userProducts from "../screens/user/UserProducts";
 import editProducts from "../screens/user/EditProducts";
+import addProducts from "../screens/user/AddProducts";
 import colors from "../constants/colors";
 
 const Stack = createStackNavigator();
@@ -112,23 +113,21 @@ const ManageProductsStackNavigator = () => {
             <Stack.Screen
                 name="userProducts"
                 component={userProducts}
-                options={{
-                    title: false,
-                    headerShown: false,
-                }}
+
             />
             <Stack.Screen
                 name="editProducts"
                 component={editProducts}
                 options={({route}) => ({
                     title: 'Edit ' + route.params.product.title,
-                    headerRight: () =>
-                        <HeaderButtons HeaderButtonComponent={HeaderButton}>
-                            <Item iconName='ios-star' onPress={() => {
-                            }}/>
-                        </HeaderButtons>
-                    ,
                 })}
+            />
+            <Stack.Screen
+                name="addProducts"
+                component={addProducts}
+                options={{
+                    title: 'Add new product',
+                }}
             />
         </Stack.Group>
     </Stack.Navigator>);
