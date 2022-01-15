@@ -7,6 +7,9 @@ const ProductItem = (props) => {
     if (Platform.OS == 'android' && Platform.Version >= 21) {
         TouchableComponent = TouchableNativeFeedback;
     }
+    const edit = props.onEdit;
+    const del = props.onDelete;
+
     return (
         <View style={styles.product}>
             <View style={styles.touchable}>
@@ -19,18 +22,34 @@ const ProductItem = (props) => {
                             <Text style={styles.title}>{props.product.title}</Text>
                             <Text style={styles.price}>${props.product.price.toFixed(2)}</Text>
                         </View>
-                        <View style={styles.actions}>
-                            <Button
-                                color={Colors.primaryColor}
-                                title="View Details"
-                                onPress={props.onViewDetails}
-                            />
-                            <Button
-                                color={Colors.primaryColor}
-                                title="Add To Cart"
-                                onPress={props.onAddToCart}
-                            />
-                        </View></View>
+                        {
+                            edit || del ?
+                                <View style={styles.actions}>
+                                    <Button
+                                        color={Colors.alertColor}
+                                        title="edit"
+                                        onPress={edit}
+                                    />
+                                    <Button
+                                        color={Colors.dangerColor}
+                                        title="Delete"
+                                        onPress={del}
+                                    />
+                                </View>
+                                : <View style={styles.actions}>
+                                    <Button
+                                        color={Colors.primaryColor}
+                                        title="View Details"
+                                        onPress={props.onViewDetails}
+                                    />
+                                    <Button
+                                        color={Colors.primaryColor}
+                                        title="Add To Cart"
+                                        onPress={props.onAddToCart}
+                                    />
+                                </View>
+                        }
+                    </View>
                 </TouchableComponent>
             </View>
         </View>
@@ -46,7 +65,7 @@ const styles = StyleSheet.create({
         elevation: 5,
         borderRadius: 10,
         backgroundColor: 'white',
-        height: 300,
+        height: 250,
         margin: 20,
     },
     touchable: {
