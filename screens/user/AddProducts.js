@@ -16,8 +16,8 @@ const AddProducts = (props) => {
     const prod = new Product(
         Math.floor(Math.random() * 100), 'u1', title, imageUrl, description, Number(price)
     );
-    console.log(prod);
     dispatch(productActions.createProduct(prod));
+    props.navigation.navigate('userProducts');
   }
   return (
       <ScrollView>
