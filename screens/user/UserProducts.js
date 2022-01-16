@@ -1,5 +1,5 @@
 import React , {useLayoutEffect}from "react";
-import {FlatList} from "react-native";
+import {FlatList,Alert} from "react-native";
 import ProductItem from "../../components/shop/ProductItem";
 import {useDispatch, useSelector} from "react-redux";
 import * as cartActions from '../../store/actions/cart'
@@ -26,6 +26,24 @@ const UserProducts = (props) => {
             })
         }
     );
+
+    const deleteHandler = (prodId) => {
+        Alert.alert(
+            "Delete confirmation",
+            "Are you sure you would like to delete this product?",
+            [
+                {
+                    text: "Cancel",
+                    onPress: () => {},
+                    style: "cancel"
+                },
+                {text: "OK", onPress: () => {
+                    dispatch(productActions.deleteProduct(prodId))
+                    }}
+            ]
+        );
+
+    }
     return (
         <FlatList
             data={userProducts}
@@ -43,11 +61,9 @@ const UserProducts = (props) => {
                             props.navigation.navigate('editProducts', {product: itemData.item});
                         }
                     }
-                    onDelete={
-                        ()=>{
-                            dispatch(productActions.deleteProduct(itemData.item.id))
-                        }
-                    }
+                    onDelete={() => {
+                        deleteHandler(itemData.item.id)
+                    }}
                 />}
         />
     )
