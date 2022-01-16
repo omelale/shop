@@ -1,6 +1,7 @@
 import React from "react";
 import {Button, Image, Platform, StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View} from 'react-native'
 import Colors from "../../constants/colors";
+import Card from "../Card";
 
 const ProductItem = (props) => {
     let TouchableComponent = TouchableOpacity;
@@ -11,60 +12,55 @@ const ProductItem = (props) => {
     const del = props.onDelete;
 
     return (
-        <View style={styles.product}>
-            <View style={styles.touchable}>
-                <TouchableComponent onPress={props.onViewDetails} useForeground>
-                    <View>
-                        <View style={styles.imageContainer}>
-                            <Image style={styles.image} source={{uri: props.product.imageUrl}}/>
+        <Card style={styles.product}>
+            <View>
+                <View style={styles.touchable}>
+                    <TouchableComponent onPress={props.onViewDetails} useForeground>
+                        <View>
+                            <View style={styles.imageContainer}>
+                                <Image style={styles.image} source={{uri: props.product.imageUrl}}/>
+                            </View>
+                            <View style={styles.details}>
+                                <Text style={styles.title}>{props.product.title}</Text>
+                                <Text style={styles.price}>${props.product.price.toFixed(2)}</Text>
+                            </View>
+                            {
+                                edit || del ?
+                                    <View style={styles.actions}>
+                                        <Button
+                                            color={Colors.alertColor}
+                                            title="edit"
+                                            onPress={edit}
+                                        />
+                                        <Button
+                                            color={Colors.dangerColor}
+                                            title="Delete"
+                                            onPress={del}
+                                        />
+                                    </View>
+                                    : <View style={styles.actions}>
+                                        <Button
+                                            color={Colors.primaryColor}
+                                            title="View Details"
+                                            onPress={props.onViewDetails}
+                                        />
+                                        <Button
+                                            color={Colors.primaryColor}
+                                            title="Add To Cart"
+                                            onPress={props.onAddToCart}
+                                        />
+                                    </View>
+                            }
                         </View>
-                        <View style={styles.details}>
-                            <Text style={styles.title}>{props.product.title}</Text>
-                            <Text style={styles.price}>${props.product.price.toFixed(2)}</Text>
-                        </View>
-                        {
-                            edit || del ?
-                                <View style={styles.actions}>
-                                    <Button
-                                        color={Colors.alertColor}
-                                        title="edit"
-                                        onPress={edit}
-                                    />
-                                    <Button
-                                        color={Colors.dangerColor}
-                                        title="Delete"
-                                        onPress={del}
-                                    />
-                                </View>
-                                : <View style={styles.actions}>
-                                    <Button
-                                        color={Colors.primaryColor}
-                                        title="View Details"
-                                        onPress={props.onViewDetails}
-                                    />
-                                    <Button
-                                        color={Colors.primaryColor}
-                                        title="Add To Cart"
-                                        onPress={props.onAddToCart}
-                                    />
-                                </View>
-                        }
-                    </View>
-                </TouchableComponent>
+                    </TouchableComponent>
+                </View>
             </View>
-        </View>
+        </Card>
     )
 }
 
 const styles = StyleSheet.create({
     product: {
-        shadowColor: 'black',
-        shadowOpacity: 0.26,
-        shadowOffset: {width: 0, height: 2},
-        shadowRadius: 8,
-        elevation: 5,
-        borderRadius: 10,
-        backgroundColor: 'white',
         height: 250,
         margin: 20,
     },
