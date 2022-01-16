@@ -5,17 +5,19 @@ import {useDispatch} from "react-redux";
 import * as productActions from '../../store/actions/products'
 
 const EditProducts = (props) => {
+    const dispatch = useDispatch();
     const product = props.route.params.product;
-    const [title, setTitle] = useState(product ? product.title : '');
-    const [imageUrl, setImageUrl] = useState(product ? product.imageUrl : '');
-    const [price, setPrice] = useState(product ? product.price : 0);
-    const [description, setDescription] = useState(product ? product.description : '');
-    const editProduct = () => {
+    const [title, setTitle] = useState(product.title);
+    const [imageUrl, setImageUrl] = useState(product.imageUrl);
+    const [price, setPrice] = useState(product.price);
+    const [description, setDescription] = useState(product.description);
+    const editProd = () => {
         product.title = title;
         product.imageUrl = imageUrl;
-        product.price = price;
+        product.price = Number(price);
         product.description = description;
-        console.log(product)
+        dispatch(productActions.editProduct(product))
+        props.navigation.navigate('userProducts');
     }
     return (
         <ScrollView>
@@ -40,6 +42,7 @@ const EditProducts = (props) => {
                     <Text style={styles.label}>Price</Text>
                     <TextInput
                         style={styles.input}
+                        keyboardType='numeric'
                         value={price}
                         onChangeText={text => setPrice(text)}
                     />
@@ -56,7 +59,7 @@ const EditProducts = (props) => {
                     <Button
                         color={colors.primaryColor}
                         title="Edit Product"
-                        onPress={editProduct}
+                        onPress={editProd}
                     />
                 </View>
             </View>
