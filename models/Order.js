@@ -8,8 +8,10 @@ class Order {
         this.totalAmount = totalAmount;
         this.date = date;
     }
-    get readableDate(){
+
+    get readableDate() {
         return moment(this.date).format('MMMM Do YYYY, hh:mm');
     }
 }
+
 export default Order

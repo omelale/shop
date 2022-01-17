@@ -18,9 +18,7 @@ const Stack = createStackNavigator();
 const ProductStackNavigator = () => {
     return (<Stack.Navigator>
         <Stack.Group screenOptions={{
-            headerStyle: styles.headerStyle,
-            headerTintColor: '#fff',
-            headerTitleStyle: styles.headerTitleStyle
+            headerStyle: styles.headerStyle, headerTintColor: '#fff', headerTitleStyle: styles.headerTitleStyle
         }}>
             <Stack.Screen
                 name="ProductListScreen"
@@ -34,12 +32,10 @@ const ProductStackNavigator = () => {
                 component={ProductDetailsScreen}
                 options={({route}) => ({
                     title: route.params.product.title,
-                    headerRight: () =>
-                        <HeaderButtons HeaderButtonComponent={HeaderButton}>
-                            <Item iconName='ios-star' onPress={() => {
-                            }}/>
-                        </HeaderButtons>
-                    ,
+                    headerRight: () => <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                        <Item iconName='ios-star' onPress={() => {
+                        }}/>
+                    </HeaderButtons>,
                 })}
             />
         </Stack.Group>
@@ -50,9 +46,7 @@ const ProductStackNavigator = () => {
 const CartStackNavigator = () => {
     return (<Stack.Navigator>
         <Stack.Group screenOptions={{
-            headerStyle: styles.headerStyle,
-            headerTintColor: '#fff',
-            headerTitleStyle: styles.headerTitleStyle
+            headerStyle: styles.headerStyle, headerTintColor: '#fff', headerTitleStyle: styles.headerTitleStyle
         }}>
             <Stack.Screen
                 name="CartScreen"
@@ -75,9 +69,7 @@ const CartStackNavigator = () => {
 const SearchStackNavigator = () => {
     return (<Stack.Navigator>
         <Stack.Group screenOptions={{
-            headerStyle: styles.headerStyle,
-            headerTintColor: '#fff',
-            headerTitleStyle: styles.headerTitleStyle
+            headerStyle: styles.headerStyle, headerTintColor: '#fff', headerTitleStyle: styles.headerTitleStyle
         }}>
             <Stack.Screen
                 name="SearchScreen"
@@ -91,12 +83,10 @@ const SearchStackNavigator = () => {
                 component={ProductDetailsScreen}
                 options={({route}) => ({
                     title: route.params.product.title,
-                    headerRight: () =>
-                        <HeaderButtons HeaderButtonComponent={HeaderButton}>
-                            <Item iconName='ios-star' onPress={() => {
-                            }}/>
-                        </HeaderButtons>
-                    ,
+                    headerRight: () => <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                        <Item iconName='ios-star' onPress={() => {
+                        }}/>
+                    </HeaderButtons>,
                 })}
             />
         </Stack.Group>
@@ -106,9 +96,7 @@ const SearchStackNavigator = () => {
 const ManageProductsStackNavigator = () => {
     return (<Stack.Navigator>
         <Stack.Group screenOptions={{
-            headerStyle: styles.headerStyle,
-            headerTintColor: '#fff',
-            headerTitleStyle: styles.headerTitleStyle
+            headerStyle: styles.headerStyle, headerTintColor: '#fff', headerTitleStyle: styles.headerTitleStyle
         }}>
             <Stack.Screen
                 name="userProducts"

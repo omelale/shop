@@ -40,20 +40,14 @@ const productReducer = (state = initialState, action) => {
         }
         case EDIT_PRODUCT : {
             const prodId = action.product.id;
-            const prodIndexInAll = state.availableProducts.findIndex(
-                prod => prod.id === prodId
-            );
+            const prodIndexInAll = state.availableProducts.findIndex(prod => prod.id === prodId);
             const updatedAvailableProducts = [...state.availableProducts];
             updatedAvailableProducts[prodIndexInAll] = action.product;
-            const prodIndexInUserProds = state.userProducts.findIndex(
-                prod => prod.id === prodId
-            );
+            const prodIndexInUserProds = state.userProducts.findIndex(prod => prod.id === prodId);
             const updatedUserProducts = [...state.userProducts];
             updatedUserProducts[prodIndexInUserProds] = action.product;
             return {
-                ...state,
-                availableProducts: updatedAvailableProducts,
-                userProducts: updatedUserProducts
+                ...state, availableProducts: updatedAvailableProducts, userProducts: updatedUserProducts
             }
         }
         default : {

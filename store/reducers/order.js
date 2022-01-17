@@ -2,16 +2,15 @@ import {ADD_ORDER} from "../actions/order";
 import Order from "../../models/Order";
 
 const initialState = {
-    orders : []
+    orders: []
 }
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case  ADD_ORDER :
-            const newOrder = new Order(new Date().toString(), action.orderData.items, action.orderData.amount , new Date());
+            const newOrder = new Order(new Date().toString(), action.orderData.items, action.orderData.amount, new Date());
             return {
-                ...state,
-                orders: state.orders.concat(newOrder)
+                ...state, orders: state.orders.concat(newOrder)
             }
 
         default :

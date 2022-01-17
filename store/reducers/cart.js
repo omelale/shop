@@ -4,9 +4,7 @@ import {DELETE_PRODUCT} from "../actions/products";
 import CartItem from "../../models/Cart-Item";
 
 const initialState = {
-    totalProducts: 0,
-    items: {},
-    totalAmount: 0
+    totalProducts: 0, items: {}, totalAmount: 0
 }
 
 const cartReducer = (state = initialState, action) => {
@@ -18,13 +16,7 @@ const cartReducer = (state = initialState, action) => {
             let updatedOrNewCartItem;
             //check if product key exists in cart items
             if (state.items[addedProduct.id]) {
-                updatedOrNewCartItem = new CartItem(
-                    state.items[addedProduct.id].quantity + 1,
-                    productPrice,
-                    prodTitle,
-                    addedProduct.imageUrl,
-                    state.items[addedProduct.id].sum + productPrice
-                );
+                updatedOrNewCartItem = new CartItem(state.items[addedProduct.id].quantity + 1, productPrice, prodTitle, addedProduct.imageUrl, state.items[addedProduct.id].sum + productPrice);
             } else {
                 updatedOrNewCartItem = new CartItem(1, productPrice, prodTitle, addedProduct.imageUrl, productPrice)
             }
@@ -40,12 +32,7 @@ const cartReducer = (state = initialState, action) => {
             const currentQty = selectedCartItem.quantity;
             let updatedCartItems;
             if (currentQty > 1) {
-                const updatedCartItem = new CartItem(
-                    selectedCartItem.quantity - 1,
-                    selectedCartItem.productPrice,
-                    selectedCartItem.productTitle,
-                    selectedCartItem.productImage,
-                    selectedCartItem.sum - selectedCartItem.productPrice,)
+                const updatedCartItem = new CartItem(selectedCartItem.quantity - 1, selectedCartItem.productPrice, selectedCartItem.productTitle, selectedCartItem.productImage, selectedCartItem.sum - selectedCartItem.productPrice,)
                 updatedCartItems = {...state.items, [action.pid]: updatedCartItem}
             } else {
                 updatedCartItems = {...state.items};
@@ -53,16 +40,16 @@ const cartReducer = (state = initialState, action) => {
             }
             return {
                 ...state,
-                items : updatedCartItems,
-                totalAmount: state.totalAmount-selectedCartItem.productPrice,
+                items: updatedCartItems,
+                totalAmount: state.totalAmount - selectedCartItem.productPrice,
                 totalProducts: state.totalProducts - 1
             }
         }
         case ADD_ORDER : {
-            return state=initialState;
+            return state = initialState;
         }
         case DELETE_PRODUCT : {
-            if(!state.items[action.product]){
+            if (!state.items[action.product]) {
                 return state;
             }
             const updatedItems = {...state.items};

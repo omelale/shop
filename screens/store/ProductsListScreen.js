@@ -7,19 +7,19 @@ import * as cartActions from '../../store/actions/cart'
 const ProductListScreen = (props) => {
     const products = useSelector(state => state.products.availableProducts);
     const dispatch = useDispatch()
-    return (
-        <FlatList
-            data={products}
-            keyExtractor={item => item.id}
-            renderItem={itemData => <ProductItem
-                product={itemData.item}
-                onViewDetails={() => {
-                    props.navigation.navigate('ProductDetailsScreen', {product: itemData.item});
-                }}
-                onAddToCart={() => { dispatch(cartActions.addToCart(itemData.item))}}
-            />}
-        />
-    )
+    return (<FlatList
+        data={products}
+        keyExtractor={item => item.id}
+        renderItem={itemData => <ProductItem
+            product={itemData.item}
+            onViewDetails={() => {
+                props.navigation.navigate('ProductDetailsScreen', {product: itemData.item});
+            }}
+            onAddToCart={() => {
+                dispatch(cartActions.addToCart(itemData.item))
+            }}
+        />}
+    />)
 }
 
 const styles = StyleSheet.create({
