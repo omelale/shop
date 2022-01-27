@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
     products: productsReducer, cart: cartReducer, order: orderReducer
 });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 const LoadFonts = async () => {
     await useFonts();
