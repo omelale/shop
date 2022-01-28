@@ -4,6 +4,7 @@ export const ADD_TO_FAVOURITES = 'ADD_TO_FAVOURITES';
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 export const CREATE_PRODUCT = 'CREATE_PRODUCT';
 export const EDIT_PRODUCT = 'EDIT_PRODUCT';
+export const SET_PRODUCTS = 'SET_PRODUCTS';
 
 export const addToFavourites = (product) => {
     return {
@@ -14,6 +15,23 @@ export const addToFavourites = (product) => {
 export const deleteProduct = (product) => {
     return {
         type: DELETE_PRODUCT, product: product
+    }
+}
+
+export const fetchProducts = () => {
+    return async dispatch => {
+        //here we can put any async code we want
+        const response = await fetch('https://shop-348b2-default-rtdb.europe-west1.firebasedatabase.app/products.json');
+        const resData = await response.json();
+        console.log(resData);
+        const loadedProducts = [];
+        for (const resDataKey in resData) {
+            let currentObject = resData[resDataKey];
+            loadedProducts.push(new Product(resDataKey, 'u1', currentObject.title, currentObject.imageUrl, currentObject.description, currentObject.price));
+        }
+        dispatch({
+            type: SET_PRODUCTS, products: loadedProducts
+        });
     }
 }
 
@@ -28,10 +46,10 @@ export const createProduct = (product) => {
             body:
                 JSON.stringify(
                     {
-                        title : product.title,
+                        title: product.title,
                         description: product.description,
-                        imageUrl : product.imageUrl,
-                        price : product.price
+                        imageUrl: product.imageUrl,
+                        price: product.price
                     }
                 )
         });
