@@ -1,5 +1,5 @@
 import PRODUCTS from "../../data/dummy-data";
-import {ADD_TO_FAVOURITES, CREATE_PRODUCT, DELETE_PRODUCT, EDIT_PRODUCT} from "../actions/products";
+import {ADD_TO_FAVOURITES, CREATE_PRODUCT, DELETE_PRODUCT, EDIT_PRODUCT,SET_PRODUCTS} from "../actions/products";
 
 const initialState = {
     availableProducts: PRODUCTS,
@@ -9,6 +9,13 @@ const initialState = {
 
 const productReducer = (state = initialState, action) => {
     switch (action.type) {
+        case SET_PRODUCTS : {
+            return {
+                ...state,
+                availableProducts: action.products,
+                userProducts: action.products.filter(product => product.ownerId === 'u1')
+            }
+        }
         case ADD_TO_FAVOURITES : {
             const addedProduct = action.product;
             const existingIndex = state.favouriteProducts.findIndex(product => product.id === addedProduct);
