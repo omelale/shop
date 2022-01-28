@@ -1,12 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {FlatList, StyleSheet} from "react-native";
 import {useDispatch, useSelector} from "react-redux";
 import ProductItem from "../../components/shop/ProductItem";
 import * as cartActions from '../../store/actions/cart'
+import * as productActions from "../../store/actions/products";
 
 const ProductListScreen = (props) => {
     const products = useSelector(state => state.products.availableProducts);
     const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(productActions.fetchProducts());
+    },[dispatch])
+
     return (<FlatList
         data={products}
         keyExtractor={item => item.id}
